@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../App';
 import { Link } from 'react-router-dom';
+import { baseurl } from '../../Utils/constant';
 
 
 export const SubscribedPost = () => {
@@ -8,7 +9,7 @@ export const SubscribedPost = () => {
   const [data,setData]=useState([])
 
   useEffect(()=>{
-    fetch('/getsubscribpost',{
+    fetch(baseurl + '/getsubscribpost',{
       headers:{
         "Authorization":"Bearer " +localStorage.getItem("jwt")
       }
@@ -22,7 +23,7 @@ export const SubscribedPost = () => {
     })
   },[])
   const likePost=(id)=>{
-    fetch('/like',{
+    fetch(baseurl + '/like',{
       method:"put",
       headers:{
         "Content-Type":"application/json",
@@ -52,7 +53,7 @@ export const SubscribedPost = () => {
     })  
   }
   const unlikePost=(id)=>{
-    fetch('/unlike',{
+    fetch(baseurl + '/unlike',{
       method:"put",
       headers:{
         "Content-Type":"application/json",
@@ -82,7 +83,7 @@ export const SubscribedPost = () => {
   }
 
   const makeComment=(text,postId)=>{
-    fetch('/comment',{
+    fetch(baseurl + '/comment',{
       method:"put",
       headers:{
        "Content-Type":"application/json",
@@ -116,7 +117,7 @@ export const SubscribedPost = () => {
   
   console.log("postdelete in home is: ",postId)
   console.log("in ",postId)
-    fetch(`/deletepost/${postId}`,{
+    fetch(baseurl + `/deletepost/${postId}`,{
       method:"delete",
       headers:{
         "Authorization":"Bearer "+localStorage.getItem("jwt")

@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../App';
+import { baseurl } from '../../Utils/constant';
 //rafc
 
 export const Profile = () => {
   const {state,dispatch}=useContext(UserContext)
   const [mypics, setPics]=useState([])
-  console.log("i am in profile" )
+
   useEffect (()=>{
-    fetch('/mypost',{
+    fetch(baseurl + '/mypost',{
       headers:{
         "Authorization": "Bearer " +localStorage.getItem("jwt")
       }

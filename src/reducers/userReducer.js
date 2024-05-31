@@ -1,24 +1,23 @@
 //redux + context api
-export const initialState=null;
+export const initialState = null;
 
-export const reducer=(state, action)=>{
-    //console.log("reducer is ",reducer)
-    //console.log("action  is ",action)
-    
-    if(action.type==="USER"){
-        return action.payload
-    }
-    if(action.type==="CLEAR"){
-        return null
-    }
-    if(action.type==='UPDATE'){
-        return {
-            
-        ...state,
-        followers:action.payload.followers,
-        following:action.payload.following
-    }
-}
+export const reducer = (state, action) => {
+  //console.log("reducer is ",reducer)
+  //console.log("action  is ",action)
 
-    return state
-}
+  if (action.type === "USER") {
+    return action.payload;
+  }
+  if (action.type === "CLEAR") {
+    return null;
+  }
+  if (action.type === "UPDATE") {
+    return {
+      ...state,
+      followers: action.payload.followers,
+      following: action.payload.following,
+    };
+  }
+
+  return state;
+};

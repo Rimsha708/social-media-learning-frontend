@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
 import { useParams } from "react-router-dom";
 import { initialState } from "../../reducers/userReducer";
+import { baseurl } from "../../Utils/constant";
 
 //rafc
 
@@ -22,7 +23,7 @@ export const UserProfile = () => {
   //setShowFollow(!state?state.includes(userid))
   useEffect(() => {
     //console.log("i am in useeffect");
-    fetch(`/user/${userid}`, {
+    fetch(baseurl + `/user/${userid}`, {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("jwt"),
       },
@@ -49,7 +50,7 @@ export const UserProfile = () => {
   },[userid]);
   const followUser=()=>{
     console.log("i am in followers")
-  fetch('/follow',{
+  fetch(baseurl + '/follow',{
     method:"Put",
     headers:{
       "Content-Type":"application/json",
@@ -82,7 +83,7 @@ export const UserProfile = () => {
 }) 
   }
 const UnfollowUser=()=>{
-  fetch('/unfollow',{
+  fetch(baseurl + '/unfollow',{
     method:"put",
     headers:{
       "Content-Type":"application/json",

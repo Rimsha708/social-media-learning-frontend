@@ -14,25 +14,18 @@ import { SubscribedPost } from "./components/screens/Subscribed_User_post";
 export const UserContext = createContext();
 
 const Routing = () => {
-  
-  const {state,dispatch}=useContext(UserContext);
-  //console.log("user profile is " ,{UserProfile});
-  //console.log("dispatch is " ,dispatch);
+  const { dispatch } = useContext(UserContext);
   const navigate = useNavigate();
-  //console.log("navigate is " ,navigate);
+
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user")); //instead of local use cookies
-   // console.log("user is " ,user.name);
+    const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
-      dispatch({type:"USER", payload:user})
-      
-      console.log("here in home");
-     // navigate("/");
+      dispatch({ type: "USER", payload: user });
     } else {
-      console.log("here in signin");
       navigate("/signin");
     }
   }, []);
+
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
@@ -40,16 +33,16 @@ const Routing = () => {
       <Route exact path="/signup" element={<SignUp />} />
       <Route exaxt path="/profile" element={<Profile />} />
       <Route exaxt path="/create" element={<Createpost />} />
-      <Route  path="/profile/:userid" element={<UserProfile/>} />
-      <Route  path="/myfollowerspost" element={<SubscribedPost/>} />
+      <Route path="/profile/:userid" element={<UserProfile />} />
+      <Route path="/myfollowerspost" element={<SubscribedPost />} />
     </Routes>
   );
 };
 
 function App() {
-  const [state, dispatch]= useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <UserContext.Provider value={{state,dispatch }}>
+    <UserContext.Provider value={{ state, dispatch }}>
       <BrowserRouter>
         <Navbar />
         <Routing />
