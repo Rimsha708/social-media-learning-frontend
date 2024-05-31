@@ -1,0 +1,38 @@
+.b{
+  margin-left: 5%;
+}
+.auth_card{
+  padding: 20px;
+  text-align: center;
+  width: 400px; 
+  margin:10px auto;
+}
+
+.mycard{
+  margin-top: 30px;
+
+}
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid purple;
+    box-shadow: 0 1px 0 0 #000;
+  }
+  .gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .item{
+    width:30%;
+    
+  }
+  .home{
+  
+    
+  }
+  .home-card{
+    max-width: 450px;
+    height: max-content;
+    margin: 25px auto;
+  }
+  
